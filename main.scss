@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Exo 2", sans-serif;
+}
+
+.wrapper{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+/* DOM PROJECTS ITEMS */
+.wrapper .dom__projects{
+    width: 100%;
+    flex-basis: 65%;
+    flex-flow: 1;
+    flex-grow: 1;
+    flex-shrink: inherit;
+    /* padding-right: 20px; */
+
+}
+
+/* DOM PROJECTS MENU */
+.projects__menu{
+    order: 1;
+    width: 350px;
+    height: 100%;
+    min-height: 100vh;
+    position: sticky;
+    right: 0;
+    padding: 30px;
+    /* border-left: 0.5px solid rgba(0,0,0,0.5); */
+    box-shadow: 0px 1px 8px rgba(0,0,0,0.2);
+
+    li{
+        padding: 5px 0;
+        list-style: none;
+        a{
+            color: #000;
+            text-decoration: none;
+            display: inline-flex;
+            i{
+                margin-right: 10px;
+                margin-top: 4px;
+            }
+        }
+    }
+    li:hover a{
+        color: red;
+        transition: 0.1s all ease-in-out;
+    }
+
+}
+
+
+/* Project 01 */
+/* Chnage random background color by click on button */
+
+
+section{
+    padding: 30px 50px;
+    text-align: center;
+}
+.generate__background{
+    background: green;
+    .heading{
+        text-align: center;
+        color: #000;
+        stroke: red;
+        font-size: 30px;
+        padding-bottom: 10px;
+    }
+    button{
+        text-align: center !important;
+        display: block;
+        background: none;
+        border: 2px solid #000;
+        padding: 10px 20px;
+        color: #fff;
+        font-weight: bold;
+        margin: 0 auto;
+        border-radius: 4px;
+    }
+    
+    button#genBgBtn:hover{
+    background: #fff;
+    color: #000;
+    }
+}
