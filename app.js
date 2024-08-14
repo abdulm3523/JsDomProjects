@@ -1,9 +1,11 @@
+
 // Project 01
 // Chnage random background color by click on button
 // RGB code generator
 const genBgBtnRgb = document.getElementById('genBgBtnRgb')
 const changeBgRgb = document.getElementById('generate__background_rgb')
 const valuePrintRgb = document.getElementById('valuePrintRgb')
+
 // One click to change background color
 genBgBtnRgb.addEventListener('click',function(){
     const bgRgb = genRandomBgRgb()
@@ -11,7 +13,6 @@ genBgBtnRgb.addEventListener('click',function(){
     valuePrintRgb.innerHTML = genRandomBgRgb()
 
 })
-
 // Generating randomcolor
 function genRandomBgRgb(){
     // Creating rgb color RED, GREEN BLUE MAXIMUM COLOR CALUE IS 255
@@ -21,7 +22,28 @@ function genRandomBgRgb(){
 
     return `rgb(${red},${green},${blue})`
 }
-// console.log(genRandomBgRgb())
+
+
+
+// ==================================================
+// One Click to copy text
+const copyBtn = document.getElementById('copyCode')
+const copyTextAlart = document.getElementById('textDisplay')
+copyBtn.addEventListener('click', function(){
+    navigator.clipboard.writeText(valuePrintRgb.innerHTML)
+    const span = document.createElement('span')
+    span.id = 'textDisplay'
+    span.innerText = `${valuePrintRgb.innerHTML} Copied!`
+    changeBgRgb.appendChild(span)
+
+    // Remove tha span after click
+    span.addEventListener('click',function(){
+        this.remove()
+    })
+})
+
+
+
 // ==================================================
 // Project 02 
 // Chnage random background color by click on button
@@ -37,15 +59,8 @@ genBgBtnHex.addEventListener('click',function(){
     valuePrintHex.innerHTML = genRandomBgHex()
 
 })
-// ==================================================
 
-// One Click to copy text
-const copyBtn = document.getElementById('copyCode')
-copyBtn.addEventListener("click", function(){
-    navigator.clipboard.writeText(`${valuePrintHex.innerHTML}`)
-})
-
-// Generating randomcolor
+// Generating hex randomcolor
 function genRandomBgHex(){
     // Creating rgb color RED, GREEN BLUE MAXIMUM COLOR CALUE IS 255
     const red = Math.floor(Math.random()*255)
