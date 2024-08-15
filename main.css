@@ -53,7 +53,7 @@ section {
   overflow: hidden; }
 
 .generate__background {
-  background: green; }
+  background: #fff; }
   .generate__background .heading {
     text-align: center;
     color: #000;
@@ -66,21 +66,38 @@ section {
     border-radius: 5px;
     margin: 0 auto;
     text-align: center;
-    color: #000;
+    color: #fff;
     margin-bottom: 30px;
     position: relative;
-    background: #fff; }
+    background: #000; }
+  .generate__background .group {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; }
+    .generate__background .group input {
+      border: 1.5px solid #000;
+      margin: 0;
+      padding: 8px 20px;
+      border-radius: 5px;
+      outline: none; }
+    .generate__background .group input:focus {
+      outline: none; }
+    .generate__background .group button {
+      padding: 7px 10px; }
   .generate__background button {
     cursor: pointer;
     display: inline-flex;
     text-align: center !important;
     background: none;
-    border: 2px solid #000;
+    border: 1.5px solid #000;
     padding: 10px 40px;
-    color: #fff;
+    color: #000;
     font-weight: bold;
     margin: 0 auto;
     border-radius: 4px; }
+    .generate__background button i {
+      margin-left: 10px; }
   .generate__background button:hover {
     background: #fff;
     color: #000; }
