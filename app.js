@@ -26,20 +26,25 @@ function genRandomBgRgb() {
 
 
 // ==================================================
-// Project 02 
+// Project 02
 // Chnage random background color by click on button
-// Hex code generator
+// Hex code generator.
+// user can put color code manually without #
+// Check input validation then
+// Copy color code if the input in valid
+// input text have to be uppercase
+
 
 const genBgBtnHex = document.getElementById('genBgBtnHex')
 const changeBgHex = document.getElementById('generate__background_hex')
 const valuePrintHex = document.getElementById('valuePrintHex')
+
 // One click to change background color
 genBgBtnHex.addEventListener('click', function () {
     const bgHex = genRandomBgHex()
-    changeBgHex.style.backgroundColor = bgHex
-    valuePrintHex.value = genRandomBgHex()
-
-
+    changeBgHex.style.backgroundColor = `#${bgHex}`
+    // change the input value when color generated
+    valuePrintHex.value = bgHex
 
 })
 
@@ -50,9 +55,29 @@ function genRandomBgHex() {
     const green = Math.floor(Math.random() * 255)
     const blue = Math.floor(Math.random() * 255)
     // converted to the haxdecimal code 16
-    return `#${red.toString(16)}${green.toString(16)}${blue.toString(16)}`
+    return `${red.toString(16)}${green.toString(16)}${blue.toString(16)}`
 
 }
+
+
+// taking value from input filed then check is that valid if valid change the values
+
+valuePrintHex.addEventListener('keyup', function (e) {
+    // stroting input value
+    const inputColor = e.target.value
+    // validating the input value
+    if (inputColor) {
+        valuePrintHex.value = inputColor.toUpperCase()
+        if (isValidColor(inputColor)) {
+            changeBgHex.style.backgroundColor = `#${inputColor}`
+            // changeBgHex.style.backgroundColor = inputColor
+        }
+    }
+})
+
+// color = color.substring(1)
+
+
 
 // ==================================================
 // One Click to copy text
@@ -60,36 +85,20 @@ const copyBtn = document.getElementById('copyCode')
 const copyTextAlart = document.getElementById('textDisplay')
 copyBtn.addEventListener('click', function () {
     // window navigator copy clopboard
-    navigator.clipboard.writeText(valuePrintHex.value)
+    navigator.clipboard.writeText(`#${valuePrintHex.value}`)
     const span = document.createElement('span')
     span.id = 'textDisplay'
 
 
     // Validation the code before copy
     if (valuePrintHex.value && isValidColor(valuePrintHex.value)) {
-        span.innerText = `${valuePrintHex.value} Copied!`
+        span.innerText = `#${valuePrintHex.value} Copied!`
         changeBgRgb.appendChild(span)
     }
     // Remove tha span after click
     span.addEventListener('click', function () {
         this.remove()
     })
-})
-
-
-
-// ===== Change bg color & copy color code if the input in valid.
-// ===== user can put color code manually then check validation then apply function
-// =================
-// taking value from input filed then check is that valid if valid change the values
-
-valuePrintHex.addEventListener('keyup', function (e) {
-    // stroting input value
-    const inputColor = e.target.value
-    // validating the input value
-    if (inputColor && isValidColor(inputColor)) {
-        changeBgHex.style.backgroundColor = inputColor
-    }
 })
 
 
@@ -101,17 +110,29 @@ valuePrintHex.addEventListener('keyup', function (e) {
  */
 function isValidColor(color) {
     // checking lenght
-    if (color.length !== 7) return false;
-
-    // checking is the valu with #
-    if (color[0] !== '#') return false;
-
-    // FILTARING # FROM THE STRING
-    color = color.substring(1)
-
+    if (color.length !== 6) return false;
     // RegExp (REGULAR EXPRESSION)
-    return /^[1-9A-Fa-f]{6}#/i
+    return /^[1-9A-Fa-f]{6}$/i
 }
 
 
+// convers hex & rgb color
 
+const hexCode = document.getElementById('outputHex')
+const rgbCode = document.getElementById('outputRgb')
+const genBtn = document.getElementById('genBgBtnHex__rgb')
+const sectionBg = document.getElementById('generate__background_hex__rgb')
+
+genBtn.addEventListener('click', function () {
+    const changeBgcolor = genColorhex()
+    rgbCode.value = changeBgcolor
+})
+
+// generating rgb color
+function genColorhex() {
+    const red = Math.floor(Math.random() * 255)
+    const green = Math.floor(Math.random() * 255)
+    const blue = Math.floor(Math.random() * 255)
+
+    return `${red},${green},${blue}`
+}
