@@ -86,6 +86,12 @@ section {
     opacity: 0.7; }
     .generate__background button i {
       margin-left: 10px; }
+    .generate__background button span {
+      position: absolute;
+      width: 100%;
+      background: #fff;
+      height: 100%;
+      display: none; }
   .generate__background button:hover {
     background: #fff;
     color: #000; }
